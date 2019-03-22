@@ -1,14 +1,18 @@
 import React from 'react';
-import movies from '../data/exampledata.js'
 
-const MovieList = () => (
-  <ul>
-    <li>Mean Girls</li>
-    <li>Hackers</li>
-    <li>The Grey</li>
-    <li>Sunshine</li>
-    <li>Ex Machina</li>
-  </ul>
-);
+
+function MovieList = (props) => {
+  // const movies = props.movies;
+  return (
+    <ul>
+      <li>{props.movies[0].title}</li>
+      <li>{props.movies[1].title}</li>
+      <li>{props.movies[2].title}</li>
+      <li>{props.movies[3].title}</li>
+      <li>{props.movies[4].title}</li>
+    </ul>
+    </div >
+  )
+};
 
 export default MovieList;

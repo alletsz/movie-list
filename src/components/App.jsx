@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      movies: [],
+      movieList: movies,
       input: '',
       search: '',
     };
@@ -31,11 +31,10 @@ class App extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <SearchBar onChange={this.handleChange} onClick={this.submit} />
-        <MovieList />
+        <MovieList movies={this.state.movieList} />
       </div>
     );
   }
