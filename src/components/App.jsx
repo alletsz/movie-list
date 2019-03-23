@@ -8,33 +8,46 @@ class App extends React.Component {
     super(props)
     this.state = {
       movieList: movies,
-      input: '',
-      search: '',
+      searchValue: '',
     };
 
     this.handleChange = this.handleChange.bind(this)
-    this.submit = this.submit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
   }
 
   handleChange(event) {
+    event.preventDefault();
     this.setState({
-      input: event.target.value,
-      search: ''
+      searchValue: event.target.value
     });
   }
 
-  submit() {
-    this.setState({
-      search: this.state.input
+  handleSubmit() {
+    event.preventDefault();
+    this.search(movies)
+  }
+
+  search() {
+    let displayFilteredMovies = this.state.movieList.filter((movie) => {
+      if (movie.title.toLowerCase().includes(this.state.searchValue.toLowerCase())) {
+        return movie.title;
+      }
     });
+    if (displayFilteredMovies.length > 0) {
+      this.setState({
+        movieList: displayFilteredMovies
+      });
+    } else {
+      alert('No movie found');
+    }
   }
 
   render() {
 
     return (
       <div>
-        <SearchBar onChange={this.handleChange} onClick={this.submit} />
+        <SearchBar input={this.state.searchValue} handleChange={this.handleChange} onClick={this.handleSubmit} />
         <MovieList movies={this.state.movieList} />
       </div>
     );
