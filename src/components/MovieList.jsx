@@ -6,11 +6,11 @@ function MovieList(props) {
   const movies = props.movies;
   return (
     <div>
-      <ul>
+      <span>
         {movies.map((movie) =>
           <MovieEntry key={movie} movieItem={movie} />
         )}
-      </ul >
+      </span >
     </div>
   );
 };
