@@ -8,7 +8,7 @@ function MovieList(props) {
     <div>
       <span>
         {movies.map((movie) =>
-          <MovieEntry key={movie} movieItem={movie} />
+          <MovieEntry key={movie} movieItem={movie} watched={props.watched} watchedList={props.watchedList} watchedMovies={props.watchedMovies} />
         )}
       </span >
     </div>
